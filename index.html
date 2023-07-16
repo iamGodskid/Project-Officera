@@ -20,12 +20,11 @@
 function runOcr(){
 	    let sel = document.getElementById("file").files[0];
 
-Tesseract.recognize(sel,
-  'eng',
+Tesseract.recognize(sel, 'eng',
   { logger: m => console.log(m) }
 ).then(({ data: { text } }) => {
   document.write(text);
-})
+});
 	.catch(err){
 console.log(err)
 }
