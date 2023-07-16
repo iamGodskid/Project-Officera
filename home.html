@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/index.css">
 <!-- v4 -->
 <script src='https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js'></script>
-  <script src="js/jquery.js"></script>
+  <script src="jquery.js"></script>
   <title>ocr</title>
 </head>
 <body>
@@ -43,7 +43,7 @@ var settings = {
 };
 
 $.ajax(settings).done(function (response) {
-     console.log(response);
+     document.write(response);
 });
 }
 
