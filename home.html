@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+<!-- v4 -->
+<script src='https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js'></script>
+  <script src="js/jquery.js"></script>
+  <title>ocr</title>
+</head>
+<body>
+	<h1>ocr</h1>
+	<a href="index.html">back</a>
+	<input type="file" id="file" onchange="runOcr();"/>
+	
+	<script>
+	
+
+function runOcr(){
+    
+    
+    let fileInput = document.getElementById("file");
+    
+    var form = new FormData();
+form.append("imageFile", fileInput.files[0], "file");
+
+var settings = {
+     "url": "https://api.cloudmersive.com/ocr/image/toText",
+     "method": "POST",
+     "timeout": 0,
+     "headers": {
+          "recognitionMode": "",
+          "language": "ENG",
+          "preprocessing": "",
+          "Content-Type": "multipart/form-data",
+          "Apikey": "31687b24-ae0c-4054-9b5c-1b15a73593c3"
+     },
+     "processData": false,
+     "mimeType": "multipart/form-data",
+     "contentType": false,
+     "data": form
+};
+
+$.ajax(settings).done(function (response) {
+     console.log(response);
+});
+}
+
+
+function readFile(){
+    let reader=new FileReader();
+    let sel = document.getElementById("file").files[0];
+    reader.onload=function(e){
+        let index = e.target.result;
+        runOcr(index);
+    }
+}
+	</script>
+</body>
+</html>

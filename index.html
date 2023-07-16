@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+<!-- v4 -->
+<script src='https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js'></script>
+  <script src="js/index.js"></script>
+  <title>ocr</title>
+</head>
+<body>
+	<h1>ocr</h1>
+	<a href="home.html">home</a>
+	<input type="file" id="file" onchange="readFile();"/>
+	
+	<script>
+import Tesseract from 'tesseract.js';
+
+function runOcr(param){
+Tesseract.recognize(param,
+  'eng',
+  { logger: m => console.log(m) }
+).then(({ data: { text } }) => {
+  console.log(text);
+})
+}
+
+function readFile(){
+    let reader=new FileReader();
+    let sel = document.getElementById("file").files[0];
+    reader.onload=function(e){
+        let index = e.target.result;
+        runOcr(index);
+    }
+}
+	</script>
+</body>
+</html>
