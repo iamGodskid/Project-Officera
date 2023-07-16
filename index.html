@@ -15,14 +15,14 @@
 	<input type="file" id="file" onchange="readFile();"/>
 	
 	<script>
-import Tesseract from 'tesseract.js';
+//import Tesseract from 'tesseract.js';
 
 function runOcr(param){
 Tesseract.recognize(param,
   'eng',
   { logger: m => console.log(m) }
 ).then(({ data: { text } }) => {
-  console.log(text);
+  document.write(text);
 })
 }
 
