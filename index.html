@@ -12,18 +12,24 @@
 <body>
 	<h1>ocr</h1>
 	<a href="home.html">home</a>
-	<input type="file" id="file" onchange="readFile();"/>
+	<input type="file" id="file" onchange="runOcr();"/>
 	
 	<script>
 //import Tesseract from 'tesseract.js';
 
-function runOcr(param){
-Tesseract.recognize(param,
+function runOcr(){
+	    let sel = document.getElementById("file").files[0];
+
+Tesseract.recognize(sel,
   'eng',
   { logger: m => console.log(m) }
 ).then(({ data: { text } }) => {
   document.write(text);
 })
+	.catch(err){
+console.log(err)
+}
+	
 }
 
 function readFile(){
