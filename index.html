@@ -17,20 +17,14 @@
 	<script>
 //import Tesseract from 'tesseract.js';
 
-function runOcr(){
-	    let sel = document.getElementById("file").files[0];
 
-Tesseract.recognize(sel, 'eng',
+Tesseract.recognize("img.png", 'eng',
   { logger: m => console.log(m) }
 ).then(({ data: { text } }) => {
   document.write(text);
 });
-	.catch(err){
-console.log(err)
-}
-	
-}
 
+	
 function readFile(){
     let reader=new FileReader();
     let sel = document.getElementById("file").files[0];
