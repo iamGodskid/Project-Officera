@@ -19,7 +19,7 @@
       const { createWorker } = Tesseract;
 
       const worker = createWorker({
-        langPath: '..',
+        langPath: './langs',
         gzip: false,
         logger: m => console.log(m)
       });
