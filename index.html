@@ -19,9 +19,9 @@
       const { createWorker } = Tesseract;
 
       const worker = createWorker({
-        langPath: './langs',
+        langPath: './eng.traineddata (1).gz',
         gzip: false,
-        logger: m => console.log(m)
+        logger: m => document.write(m)
       });
 
       (async () => {
@@ -39,7 +39,7 @@
 
 
 Tesseract.recognize("img.png", 'eng',
-  { logger: m => console.log(m) }
+  { logger: m => document.write(m) }
 ).then(({ data: { text } }) => {
   document.write(text);
 });
